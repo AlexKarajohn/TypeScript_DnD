@@ -1,5 +1,3 @@
-namespace App{
-
     export enum ProjectStatus{ Active , Finished}
     export class Project {
         constructor(
@@ -13,4 +11,3 @@ namespace App{
 
         }
     }
-}

@@ -1,10 +1,9 @@
-/// <reference path="../decorator/autobind.ts" />
-/// <reference path="../models/drag-drop-interfaces.ts" />
-/// <reference path="../models/project-model.ts" />
+import { Draggable} from '../models/drag-drop-interfaces.js';
+import {Project } from '../models/project-model.js'
+import { Component} from './component.js'
+import { Autobind} from '../decorator/autobind.js'
 
-/// <reference path="component.ts" />
 
-namespace App{
     export class ProjectItem extends Component<HTMLUListElement,HTMLLIElement> implements Draggable{
         get people(): string{
             return `${this.project.numOfPeople === 1 ? '1 Person' : `${this.project.numOfPeople} People`}`
@@ -35,4 +34,3 @@ namespace App{
         }
     }
 
-}
