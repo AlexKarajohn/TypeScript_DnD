@@ -1,7 +1,7 @@
-import { Component} from './component.js'
-import { Autobind} from '../decorator/autobind.js'
-import {Validatable,Validate} from '../util/validation.js'
-import { projectState } from '../state/project-state.js';
+import Component from './component'
+import { Autobind} from '../decorator/autobind'
+import * as Validation from '../util/validation'
+import { projectState } from '../state/project-state';
 export class ProjectInput extends Component<HTMLDivElement,HTMLFormElement>{
     titleInputElement: HTMLInputElement;
     descriptionInputElement: HTMLInputElement;
@@ -23,28 +23,28 @@ export class ProjectInput extends Component<HTMLDivElement,HTMLFormElement>{
         const enteredDescription= this.descriptionInputElement.value 
         const enteredPeople= this.peopleInputElement.value 
 
-        const titleValidatable : Validatable = {
+        const titleValidatable : Validation.Validatable = {
             value : enteredTitle,
             required: true,
             minLength: 1,
             maxLength: 20
         }
-        const descriptionValidatable : Validatable = {
+        const descriptionValidatable : Validation.Validatable = {
             value : enteredDescription,
             required: true,
             minLength: 1,
             maxLength: 20
         }
-        const peopleValidatable : Validatable = {
+        const peopleValidatable : Validation.Validatable = {
             value : +enteredPeople,
             required: true,
             min: 1,
             max: 10
         }
         if(
-            !Validate(titleValidatable) ||
-            !Validate(descriptionValidatable) ||
-            !Validate(peopleValidatable) 
+            !Validation.Validate(titleValidatable) ||
+            !Validation.Validate(descriptionValidatable) ||
+            !Validation.Validate(peopleValidatable) 
         ){
             alert('invalid input');
             return;
